@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="manager"             default="realsense2_camera_manager"/>
+  <arg name="target_frame"        default="wcias_base_link" />
+  <arg name="cloud_out"           default="/camera/cloud_concatenated" />
+  <arg name="tf_prefix_left"      default="camera_left"/>
+  <arg name="tf_prefix_right"     default="camera_right"/>
+  <arg name="clip_distance"       default="3"/>
+  <arg name="external_manager"    default="false"/>
+  <arg name="enable_pointcloud"   default="false"/>
+  <arg name="hz"                  default="30"/>
+  <arg name="camera1"             default="opt_01"/>
+  <arg name="camera2"             default="opt_02"/>
+  <arg name="camera_fps"          default="30"/>
+  <arg name="ema_alpha"           default="0.9"/>
+
+  <!-- Nodelet manager -->
+  <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="screen"/>
+
+  <!-- Cemera left -->
+  <!-- <group ns="$(arg camera1)">
+    <include ns="camera" file="$(find wheelchair_iaslab_sensors)/launch/custom_rs_rgbd.launch"> 
+      <arg name="enable_pointcloud"   value="$(arg enable_pointcloud)"/>
+      <arg name="clip_distance"       value="$(arg clip_distance)"/>
+      <arg name="manager"             value="$(arg manager)"/>
+      <arg name="external_manager"    value="$(arg external_manager)"/>
+      <arg name="ordered_pc"          value="true" />
+      <arg name="serial_no"           value="243522074384"/> 053422251600
+      <arg name="tf_prefix"           value="$(arg tf_prefix_left)"/>
+      
+      <arg name="fisheye_fps"         default="$(arg camera_fps)"/>
+      <arg name="depth_fps"           default="$(arg camera_fps)"/>
+      <arg name="infra_fps"           default="$(arg camera_fps)"/>
+      <arg name="color_fps"           default="$(arg camera_fps)"/>
+      <arg name="gyro_fps"            default="$(arg camera_fps)"/>
+      <arg name="accel_fps"           default="$(arg camera_fps)"/>
+
+      <remap from="/$(arg camera1)/camera/camera/depth/color/points" to="$(arg cloud_out1)"/>
+    </include> 
+  </group> -->
+
+  <!-- Cemera rigth 
+  <group ns="$(arg camera2)">
+    <include ns="camera" file="$(find wheelchair_iaslab_sensors)/launch/custom_rs_rgbd.launch"> 
+      <arg name="enable_pointcloud"   value="$(arg enable_pointcloud)"/>
+      <arg name="clip_distance"       value="$(arg clip_distance)"/>
+      <arg name="manager"             value="$(arg manager)"/>
+      <arg name="external_manager"    value="$(arg external_manager)"/>
+      <arg name="ordered_pc"          value="true" />
+      <arg name="serial_no"           value="233722071054"/>
+      <arg name="tf_prefix"           value="$(arg tf_prefix_right)"/>
+
+      <arg name="fisheye_fps"         default="$(arg camera_fps)"/>
+      <arg name="depth_fps"           default="$(arg camera_fps)"/>
+      <arg name="infra_fps"           default="$(arg camera_fps)"/>
+      <arg name="color_fps"           default="$(arg camera_fps)"/>
+      <arg name="gyro_fps"            default="$(arg camera_fps)"/>
+      <arg name="accel_fps"           default="$(arg camera_fps)"/>
+
+    </include>
+  </group> -->
+
+        <!-- <remap from="/$(arg camera2)/camera/camera/depth/color/points" to="$(arg cloud_out2)"/> -->
+
+
+</launch>

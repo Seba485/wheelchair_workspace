@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<library path="lib/libwheelchair_iaslab_navigation">
+        <class name ="local_planner/LocalPlanner" type ="local_planner::LocalPlanner" base_class_type= "nav_core::BaseLocalPlanner">
+                <description>
+                        Simplest Plugin for BaseLocalPlanner
+                </description>
+        </class>
+</library>

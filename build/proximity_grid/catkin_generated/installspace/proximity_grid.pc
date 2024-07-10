@@ -1,0 +1,8 @@
+prefix=/home/sebastiano/wheelchair_workspace/install
+
+Name: proximity_grid
+Description: Description of proximity_grid
+Version: 0.9.5
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lproximity_grid
+Requires: roscpp

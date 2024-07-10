@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Parameters-->
+    <arg name="prefix" default="wcias_"/>
+    <arg name="static_map" default="false"/>
+    
+    <arg name="base_global_planner" default="navfn/NavfnROS"/>
+    <arg name="base_local_planner" default="teb_local_planner/TebLocalPlannerROS"/>
+
+
+    <!-- 
+        Other local planner: 
+        base_local_planner/TrajectoryPlannerROS 
+            - poco smoot:
+                - tende a mettere prima la "coda" in posizione, poi andare avati
+                - tende ad andate indietro
+                - fa curve globali non ottime
+            - buona risposta agli ostacoli dinamici
+
+        dwa_local_planner/DWAPlannerROS   
+            - corregge abbastanza bene gli errori
+            - pensa di dover stare troppo verso la traiettoria principale:
+                - tanti colpi di coda
+            - poco reattivo agli ostacoli dinamici
+
+        eband_local_planner/EBandPlannerROS 
+            - non sono riuscito a farlo andare
+
+        teb_local_planner/TebLocalPlannerROS
+            - va indietro troppo facilmente
+            - curve un po troppo strette (ma belle)
+            - tiene poco conto della storia quano si riadatta
+            - non tiene conto che certe velocità non possono essere usate dal robot
+            - indecisione sugli ostacoli dinamici
+
+        mpc_local_planner/MpcLocalPlannerROS
+            - non sono riuscito a farlo andare
+
+            - la mia implementazione fa belle curve, ma se vuole fare un overcome degli ostacoli dinamici aumenta di molto il 
+              costo computazionale (troppo) 
+
+    -->
+
+    <arg name="global_frame" default="$(arg prefix)map"/>
+    <arg name="odom_frame" default="$(arg prefix)odom"/>
+    <arg name="base_frame" default="$(arg prefix)base_footprint"/>
+
+    <arg name="cmd_vel_topic" default="cmd_vel_old"/> <!-- using twist mux -->
+    <arg name="odom_topic" default="/odom"/>
+
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        
+        <param name="base_global_planner" value="$(arg base_global_planner)"/>
+        <param name="base_local_planner" value="$(arg base_local_planner)"/>
+        <!-- <rosparam file="$(find wheelchair_iaslab_navigation)/config/planner.yaml" command="load"/> -->
+
+        <!-- observation sources located in costmap_common.yaml -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap" />
+
+        <!-- On marrtino move_base but not on husky move_base-->
+        <!--
+        <param name="global_costmap/obstacle_layer/scan/sensor_frame" value="$(arg prefix)laser_link"/>
+        <param name="local_costmap/obstacle_layer/scan/sensor_frame" value="$(arg prefix)laser_link"/>
+        -->
+
+        <!-- local costmap, needs size -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_local.yaml" command="load" ns="local_costmap" />
+        <param name="local_costmap/width" value="10.0"/>
+        <param name="local_costmap/height" value="10.0"/>
+
+        <!-- On marrtino move_base but not on husky move_base-->
+        <param name="local_costmap/robot_base_frame" value="$(arg base_frame)"/>
+        <param name="local_costmap/global_frame" value="$(arg odom_frame)"/>
+
+        <!-- static global costmap, static map provides size -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_global_static.yaml" command="load" ns="global_costmap" if="$(arg static_map)"/>
+
+        <!-- global costmap with laser, for odom_navigation -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_global_laser.yaml" command="load" ns="global_costmap" unless="$(arg static_map)"/>
+        <param name="global_costmap/width" value="100.0" unless="$(arg static_map)"/>
+        <param name="global_costmap/height" value="100.0" unless="$(arg static_map)"/>
+        
+        <!-- On marrtino move_base but not on husky move_base-->
+        <param name="global_costmap/global_frame" value="$(arg odom_frame)" unless="$(arg static_map)"/>
+        <param name="global_costmap/global_frame" value="$(arg global_frame)" if="$(arg static_map)"/>
+        <param name="global_costmap/robot_base_frame" value="$(arg base_frame)"/>
+        <param name="DWAPlannerROS/global_frame_id" value="$(arg odom_frame)"/>
+
+        <remap from="odom" to="$(arg odom_topic)" />
+
+        <remap from="global_plan" to="$(arg odom_topic)" />
+        <remap from="local_plan" to="$(arg odom_topic)" />
+
+        
+    </node>
+
+</launch>

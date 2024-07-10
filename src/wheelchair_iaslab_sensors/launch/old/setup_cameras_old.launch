@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<launch>
+   <!--3D Real sense stereo camera 
+    <include ns="camera" file="$(find realsense2_camera)/launch/rs_camera.launch">
+    	<arg name="camera"             value="stereo_camera" />
+    	<arg name="serial_no"          value="053422251600" />
+    	<arg name="device_type"        value="d455" />
+        <arg name="align_depth"         default="true"/>
+		<arg name="initial_reset"      value="true"/>
+		<arg name="enable_depth" value="true" />
+		
+	    <arg name="output" value="log" /> 
+    </include> 
+    
+    <node name="depthscan_camera" pkg="depthimage_to_laserscan" type="depthimage_to_laserscan">
+   	    <remap from="image"  to="/camera/stereo_camera/depth/image_rect_raw" />
+   	    <remap from="camera_info" to="/camera/stereo_camera/depth/camera_info"  />
+   	    <remap from="/scan" to="/stereo_camera_unfiltered" />
+   	
+   	    <param name="output_frame_id" type="str" value="stereo_camera_depth_frame"/>
+   	    <param name="scan_heigth" value="10" />
+   </node> 
+
+    <include ns="lidar" file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="camera"             value="lidar_camera" />
+        <arg name="serial_no"          value="f1061932" /> 
+   	    <arg name="enable_gyro"        value="true"/>
+   	    <arg name="enable_accel"       value="true"/>
+   	    <arg name="unite_imu_method"   value="linear_interpolation"/>
+   	    <arg name="initial_reset"      value="true"/>
+		<arg name="output" value="log" /> 
+
+   </include>   
+   
+   <node name="depthscan" pkg="depthimage_to_laserscan" type="depthimage_to_laserscan">
+   	<remap from="image"  to="/lidar/lidar_camera/depth/image_rect_raw" />
+   	<remap from="camera_info" to="/lidar/lidar_camera/depth/camera_info"  />
+   	<remap from="/scan" to="/lidar_camera_unfiltered" />
+   	
+   	<param name="output_frame_id" type="str" value="lidar_camera_depth_frame"/>
+   	<param name="scan_heigth" value="10" />
+   </node> -->
+   
+
+   <!--Hokuyo left -->
+ 
+    <!-- <node name="left_urg_node" pkg="urg_node" type="urg_node" output="screen">
+   	    <param name="frame_id"         value="/wcias_hokuyo_laser_link_left"/>  
+  	    <param name="serial_port"      value="/dev/hokuyo_H1853627" />
+   	    <param name="serial_baud"      value="115200" />
+   	    <param name="calibrate_time"   value="true" /> -->
+   	    <!--<param name="angle_min"   value="-0.78" />-->
+        <!-- <param name="angle_min"   value="-1.4" />
+   	    <param name="angle_max"   value="2.09" /> -->	
+   	    <!-- <param name="angle_min"   value="-1.3" />
+   	    <param name="angle_max"   value="1.3" />
+   	
+   	    <remap from="scan"             to="scan_left_unfiltered" />
+   </node> -->
+
+    <!--Hokuyo left
+    <node name="left_rplidar_node" pkg="rplidar_ros" type="rplidarNode" output="screen">
+        <param name="frame_id"         value="wcias_hokuyo_laser_link_left"/>  
+   	    <param name="angle_min"   value="-2.09" />
+   	    <param name="angle_max"   value="0.78" />
+   	    <remap from="scan"             to="scan_left_unfiltered" />
+    </node>  -->
+    
+
+    <!--Hokuyo right -->
+    <!-- <node name="right_urg_node" pkg="urg_node" type="urg_node" output="screen">
+        <param name="frame_id"         value="/wcias_hokuyo_laser_link_right"/>  
+   	    <param name="serial_port"      value="/dev/hokuyo_H1853632" />
+   	    <param name="serial_baud"      value="115200" />
+   	    <param name="calibrate_time"   value="true" />
+   	    <param name="angle_min"   value="-2.09" />
+   	    <param name="angle_max"   value="0.78" />
+   	    <remap from="scan"             to="scan_right" />
+    </node> -->
+    
+    <node name="right_urg_node" pkg="urg_node" type="urg_node" output="screen">
+        <param name="frame_id"         value="/wcias_hokuyo_laser_link_right"/>  
+   	    <param name="serial_port"      value="/dev/hokuyo_H1853627" />
+   	    <param name="serial_baud"      value="115200" />
+   	    <param name="calibrate_time"   value="true" />
+   	    <param name="angle_min"   value="-2.09" />
+   	    <param name="angle_max"   value="0.78" />
+   	    <remap from="scan"             to="scan_right_unfiltered" />
+    </node>
+ 
+
+    <!-- Filters -->
+    <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="filter_ho">
+    	<remap from="/scan" to="/scan_right_unfiltered" />
+    	<remap from="/scan_filtered" to="/scan_right" /> 
+        <rosparam command="load" file="$(find wheelchair_iaslab_sensors)/config/shadow_filter.yaml" />
+    </node>
+
+	<!-- <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="filter_rp">
+    	<remap from="/scan" to="/scan_left_unfiltered" />
+    	<remap from="/scan_filtered" to="/scan_left" /> 
+        <rosparam command="load" file="$(find wheelchair_iaslab_sensors)/config/shadow_filter.yaml" />
+    </node> -->
+  
+    <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="filter_ca">
+    	<remap from="/scan" to="/stereo_camera_unfiltered" />
+  	    <remap from="/scan_filtered" to="/stereo_camera" /> 
+        <rosparam command="load" file="$(find wheelchair_iaslab_sensors)/config/shadow_filter.yaml" />
+    </node>
+  
+    <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="filter_li">
+        <remap from="/scan" to="/lidar_camera_unfiltered" />
+        <remap from="/scan_filtered" to="/lidar_camera" /> 
+        <rosparam command="load" file="$(find wheelchair_iaslab_sensors)/config/shadow_filter.yaml" />
+    </node> 
+  
+  
+</launch>
+

@@ -1,0 +1,8 @@
+prefix=/home/sebastiano/wheelchair_workspace/install
+
+Name: wheelchair_iaslab_target_generator
+Description: Description of wheelchair_iaslab_target_generator
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

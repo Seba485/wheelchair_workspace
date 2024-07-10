@@ -1,0 +1,19 @@
+ProximityPlanner:
+    frame_id: "wcias_base_link"
+    angle_min: -3.141592653589793
+    angle_max: 3.141592653589793
+    angle_inc: 0.17453293005625406
+    range_min: 0.0
+    range_max: 4.1
+    min_cost: 253
+    repellor_angular_strength: 2.6
+    repellor_angular_decay: 22  
+    vel_linear_min: 0.09
+    vel_linear_max: 0.2
+    vel_angular_min: 0.08
+    vel_angular_max: 0.22
+    rel_verts_x: [ 0.65,-0.50,-0.50, 0.65, 0.0 ]
+    rel_verts_y: [ 0.35, 0.35,-0.35,-0.35, 0.0 ]
+    arrival_radius: 0.6
+    sampling_distance: 0.3
+    safe_distance: 0.45

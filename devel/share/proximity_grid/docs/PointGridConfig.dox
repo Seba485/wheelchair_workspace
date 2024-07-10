@@ -1,0 +1,11 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~angle_min" : \b [double] Minimum grid angle min: -120.0, default: -120.0, max: 0.0
+- \b "~angle_max" : \b [double] Maximum grid angle min: 0.0, default: 120.0, max: 120.0
+- \b "~angle_inc" : \b [double] Increment grid angle min: 0.1, default: 9.0, max: 120.0
+- \b "~range_min" : \b [double] Minimum grid range min: 0.0, default: 0.0, max: 10.0
+- \b "~range_max" : \b [double] Maximum grid range min: 0.0, default: 6.0, max: 10.0
+- \b "~publish_frequency" : \b [double] Publish frequency of the node min: 0.1, default: 20.0, max: 100.0
+

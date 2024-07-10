@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>  
+    <!-- Move Base -->
+    <include file="$(find wheelchair_iaslab_navigation)/launch/move_base.launch">
+		  <arg name="static_map" value="false"/>
+	  </include>
+  
+</launch>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="offline"          default="false"/>
+
+    <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
+        <arg name="args" value="--delete_db_on_start"/>
+        <arg name="rgb_topic" value="/camera/stereo_camera/color/image_raw"/>
+        <arg name="depth_topic" value="/camera/stereo_camera/depth/image_rect_raw"/>
+       <!-- <arg name="camera_info_topic" value="/camera/stereo_camera/color/camera_info"/>-->
+        <!--<arg name="depth_camera_info_topic" value="/camera/stereo_camera/depth/camera_info"/>-->
+
+	<arg name="map_frame_id"            default="map"/>
+	<arg name="frame_id"                default="wcias_base_footprint"/>
+ 	<arg name="visual_odometry"         default="false"/> 
+ 	<arg name="odom_topic"              default="/odometry/filtered"/> 
+  	<arg name="odom_frame_id"           default="/odom"/> 
+   
+        <arg name="rtabmapviz" value="false"/>
+        <arg name="rviz" value="true"/>
+    </include>
+
+
+
+</launch>

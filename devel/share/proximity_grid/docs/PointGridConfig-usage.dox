@@ -1,0 +1,12 @@
+\subsubsection usage Usage
+\verbatim
+<node name="point_grid_parameters" pkg="proximity_grid" type="point_grid_parameters">
+  <param name="angle_min" type="double" value="-120.0" />
+  <param name="angle_max" type="double" value="120.0" />
+  <param name="angle_inc" type="double" value="9.0" />
+  <param name="range_min" type="double" value="0.0" />
+  <param name="range_max" type="double" value="6.0" />
+  <param name="publish_frequency" type="double" value="20.0" />
+</node>
+\endverbatim
+

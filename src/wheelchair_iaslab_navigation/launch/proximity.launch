@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Parameters-->
+    <arg name="prefix" default="wcias_"/>
+    <arg name="static_map" default="false"/>
+
+    <!-- TODO: move to MPC global planner -->
+    <arg name="base_global_planner" default="navfn/NavfnROS"/>
+    <arg name="base_local_planner" default="teb_local_planner/TebLocalPlannerROS"/>
+
+    <arg name="global_frame" default="$(arg prefix)map"/>
+    <arg name="odom_frame" default="$(arg prefix)odom"/>
+    <arg name="base_frame" default="$(arg prefix)base_footprint"/>
+
+    <arg name="odom_topic" default="/odometry/filtered"/>
+    <arg name="repellors_topic" default="proximity_grid/attractors"/>
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+        <param name="controller_frequency" value='50' />
+        
+        <param name="base_global_planner" value="$(arg base_global_planner)"/> 
+        <param name="base_local_planner"  value="$(arg base_local_planner)"/> 
+
+        <!-- observation sources located in costmap_common.yaml -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_global_laser.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_local_laser.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_global.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_local.yaml" command="load" ns="local_costmap" />
+
+        <!-- Load repellor pf planner config -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/repellors_pf.yaml" command="load" />
+
+        <!-- On marrtino move_base but not on husky move_base-->
+        <param name="local_costmap/robot_base_frame" value="$(arg base_frame)"/>
+        <param name="local_costmap/global_frame"     value="$(arg odom_frame)"/>
+        
+        <!-- On marrtino move_base but not on husky move_base-->
+        <param name="global_costmap/global_frame" value="$(arg odom_frame)"   unless="$(arg static_map)"/>
+        <param name="global_costmap/global_frame" value="$(arg global_frame)" if="$(arg static_map)"/>
+        <param name="global_costmap/robot_base_frame" value="$(arg base_frame)"/>
+
+        <remap from="odom"    to="$(arg odom_topic)" />
+
+    </node>
+
+</launch>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Parameters-->
+    <arg name="prefix" default="wcias_"/>
+    <arg name="static_map" default="false"/>
+    
+    <arg name="base_global_planner" default="navfn/NavfnROS"/>
+    <!-- <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/> -->
+    <arg name="base_local_planner" default="wheelchair_iaslab_planer/MyLocalPlanner"/>
+    <!-- <arg name="base_local_planner" default="base_local_planner/TrajectoryPlannerROS"/>  -->
+
+    <arg name="global_frame" default="$(arg prefix)map"/>
+    <arg name="odom_frame" default="$(arg prefix)odom"/>
+    <arg name="base_frame" default="$(arg prefix)base_footprint"/>
+
+    <arg name="cmd_vel_topic" default="www_cmd_vel"/>  <!-- using twist mux -->
+    <arg name="odom_topic" default="/odometry/filtered"/>
+
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        
+        <param name="base_global_planner" value="$(arg base_global_planner)"/> 
+
+        <param name="base_local_planner" value="$(arg base_local_planner)"/> 
+
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/planner.yaml" command="load"/>
+
+        <!-- observation sources located in costmap_common.yaml -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap" />
+        
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/recovery.yaml" command="load"/>
+        
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_converter.yaml" command="load" />
+	
+        <!-- On marrtino move_base but not on husky move_base-->
+        <!--
+        <param name="global_costmap/obstacle_layer/scan/sensor_frame" value="$(arg prefix)laser_link"/>
+        <param name="local_costmap/obstacle_layer/scan/sensor_frame" value="$(arg prefix)laser_link"/>
+        -->
+        
+        <!-- local costmap, needs size -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_local.yaml" command="load" ns="local_costmap" />
+        <param name="local_costmap/width" value="10.0"/>
+        <param name="local_costmap/height" value="10.0"/>
+
+        <!-- On marrtino move_base but not on husky move_base-->
+        <param name="local_costmap/robot_base_frame" value="$(arg base_frame)"/>
+        <param name="local_costmap/global_frame" value="$(arg odom_frame)"/>
+
+        <!-- static global costmap, static map provides size -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_global_static.yaml" command="load" ns="global_costmap" if="$(arg static_map)"/>
+
+        <!-- global costmap with laser, for odom_navigation -->
+        <rosparam file="$(find wheelchair_iaslab_navigation)/config/costmap_global_laser.yaml" command="load" ns="global_costmap" unless="$(arg static_map)"/>
+        <param name="global_costmap/width" value="100.0" unless="$(arg static_map)"/>
+        <param name="global_costmap/height" value="100.0" unless="$(arg static_map)"/>
+        
+        <!-- On marrtino move_base but not on husky move_base-->
+        <param name="global_costmap/global_frame" value="$(arg odom_frame)" unless="$(arg static_map)"/>
+        <param name="global_costmap/global_frame" value="$(arg global_frame)" if="$(arg static_map)"/>
+        <param name="global_costmap/robot_base_frame" value="$(arg base_frame)"/>
+
+        <!-- <param name="DWAPlannerROS/global_frame_id" value="$(arg odom_frame)"/> -->
+        <!--<remap from="cmd_vel" to="$(arg cmd_vel_topic)" /> -->
+        
+        <remap from="cmd_vel" to="www_cmd_vel" />
+        <remap from="odom" to="$(arg odom_topic)" />
+        
+    </node>
+
+    <node pkg="wheelchair_iaslab_planer" type="wheelchair_iaslab_mpc.py" name="wheelchair_iaslab_mpc" output="screen"/>
+
+
+</launch>

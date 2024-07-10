@@ -1,0 +1,30 @@
+  <launch>
+  
+  <!--Hokuyo left -->
+  <node name="left_urg_node" pkg="urg_node" type="urg_node" output="screen">
+   	<param name="frame_id"         value="/wcias_hokuyo_laser_link_left"/>  
+   	<param name="serial_port"      value="/dev/hokuyo_H1853627" />
+   	<param name="serial_baud"      value="115200" />
+   	<param name="calibrate_time"   value="true" />
+   	<param name="angle_min"   value="-0.78" />
+   	<param name="angle_max"   value="2.09" />	
+   	<remap from="scan"             to="scan_left" />
+   	
+   </node> 
+   
+   
+   
+     <!--Hokuyo right-->
+ <node name="right_urg_node" pkg="urg_node" type="urg_node" output="screen">
+   	<param name="frame_id"         value="/wcias_hokuyo_laser_link_right"/>  
+   	<param name="serial_port"      value="/dev/hokuyo_H1853632" />
+   	<param name="serial_baud"      value="115200" />
+   	<param name="calibrate_time"   value="true" />
+   	<param name="angle_min"   value="-2.09" />
+   	<param name="angle_max"   value="0.78" />	
+   	<remap from="scan"             to="scan_right" />
+   	
+   </node>
+   
+   
+   </launch>

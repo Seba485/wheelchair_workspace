@@ -1,0 +1,8 @@
+prefix=/home/sebastiano/wheelchair_workspace/devel
+
+Name: wheelchair_iaslab_navigation
+Description: Description of wheelchair_iaslab_navigation
+Version: 0.0.1
+Cflags: -I/home/sebastiano/wheelchair_workspace/devel/include -I/home/sebastiano/wheelchair_workspace/src/navigation/nav_core/include -I/home/sebastiano/wheelchair_workspace/src/geometry2-tf-no-warn-on-duplicates/tf2_ros/include -I/home/sebastiano/wheelchair_workspace/src/geometry2-tf-no-warn-on-duplicates/tf2/include -I/home/sebastiano/wheelchair_workspace/src/geometry2-tf-no-warn-on-duplicates/tf2_msgs/include -I/home/sebastiano/wheelchair_workspace/src/navigation/costmap_2d/include -I/home/sebastiano/wheelchair_workspace/src/navigation/voxel_grid/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include -I/usr/include/eigen3
+Libs: -L${prefix}/lib -lwheelchair_iaslab_navigation
+Requires: 

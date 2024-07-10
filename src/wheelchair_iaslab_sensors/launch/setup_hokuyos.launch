@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="angle_min"          default="0.6"/> <!-- 0.79 -->
+  <arg name="angle_max"          default="1.8"/>
+
+  <!-- Hokuyo left -->
+  <node name="left_urg_node" pkg="urg_node" type="urg_node" output="screen">
+    <param name="frame_id"         value="/wcias_hokuyo_laser_link_left"/>  
+    <param name="serial_port"      value="/dev/hokuyo_H2156238" />
+    <param name="serial_baud"      value="115200" />
+    <param name="calibrate_time"   value="true" />
+    <param name="angle_max"        value="$(arg angle_max)"  />
+    <param name="angle_min"        value="-$(arg angle_min)" />
+    <remap from="scan"             to="scan_left" />
+  </node>
+
+  <!-- Hokuyo right -->
+  <node name="right_urg_node" pkg="urg_node" type="urg_node" output="screen">
+    <param name="frame_id"         value="/wcias_hokuyo_laser_link_right"/>  
+    <param name="serial_port"      value="/dev/hokuyo_H1853627" />
+    <param name="serial_baud"      value="115200" />
+    <param name="calibrate_time"   value="true" />
+    <param name="angle_min"        value="-$(arg angle_max)"  />
+    <param name="angle_max"        value="$(arg angle_min)"   />
+    <remap from="scan"             to="scan_right" />
+  </node>
+ 
+  <!-- Filters
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="filter_ho_r">
+    <remap from="/scan"          to="/scan_right_unfiltered" />
+    <remap from="/scan_filtered" to="/scan_right" /> 
+    <rosparam command="load"     file="$(find wheelchair_iaslab_sensors)/config/shadow_filter.yaml" />
+  </node>
+
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="filter_ho_l">
+    <remap from="/scan" to="/scan_left_unfiltered" />
+    <remap from="/scan_filtered" to="/scan_left" /> 
+    <rosparam command="load" file="$(find wheelchair_iaslab_sensors)/config/shadow_filter.yaml" />
+  </node> -->
+</launch>
+

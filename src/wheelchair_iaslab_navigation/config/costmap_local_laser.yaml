@@ -1,0 +1,8 @@
+global_frame: wcias_odom
+#robot_base_frame: base_link
+rolling_window: true
+
+plugins:
+ - {name: laser_layer_temp,     type: "spatio_temporal_voxel_layer/SpatioTemporalVoxelLayer"}
+ - {name: inflation_layer,      type: "costmap_2d::InflationLayer"}
+
