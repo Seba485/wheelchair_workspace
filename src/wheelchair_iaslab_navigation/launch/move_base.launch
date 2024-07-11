@@ -48,6 +48,9 @@
     <arg name="cmd_vel_topic" default="cmd_vel_old"/> <!-- using twist mux -->
     <arg name="odom_topic" default="/odom"/>
 
+    <!-- Load the parameters for tolerance-->
+    <rosparam file="$(find wheelchair_iaslab_navigation)/config/move_base_params.yaml" command="load" />
+
 
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
         

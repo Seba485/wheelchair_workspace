@@ -1,0 +1,12 @@
+
+
+DWAPlannerROS:
+  max_vel_x: 0.5
+  min_vel_x: 0.1
+  max_vel_theta: 1.0
+  min_in_place_vel_theta: 0.4
+  acc_lim_x: 2.5
+  acc_lim_theta: 3.2
+  xy_goal_tolerance: 0.01  # Specify your tolerance for position
+  yaw_goal_tolerance: 0.001  # Specify your tolerance for orientation
+  latch_xy_goal_tolerance: false  # Optional, set to true if you want the robot to consider the goal reached if within xy tolerance even if it moves out slightly

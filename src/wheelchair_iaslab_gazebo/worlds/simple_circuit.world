@@ -570,10 +570,10 @@
 
     <gui fullscreen='0'>
       <camera name="user_camera">
-      <pose>-13 -7 20 0 -6.5 0</pose>
+      <pose>-10 -7 20 0 -6.5 0</pose>
       <track_visual>
         <name>wheelchair_iaslab</name>
-        <min_dist>4.0</min_dist>
+        <min_dist>6.0</min_dist>
         <max_dist>10.0</max_dist>
         <static>false</static>
       </track_visual>
@@ -581,6 +581,7 @@
     </gui>
     
     <model name='unit_box_clone'>
+    <static>1</static>
       <pose>-7.58558 0.280294 0.498255 1.2e-05 0.00073 0.014326</pose>
       <link name='link'>
         <inertial>
@@ -634,6 +635,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1'>
+    <static>1</static>
       <pose>-6.39982 -5.73689 0.499746 1e-06 -0.000158 0.010537</pose>
       <link name='link'>
         <inertial>
@@ -687,6 +689,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_2'>
+    <static>1</static>
       <pose>-3.62069 -6.92953 0.499746 1e-06 -0.000158 0.004574</pose>
       <link name='link'>
         <inertial>
@@ -740,6 +743,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1_clone'>
+    <static>1</static>
       <pose>-3.53894 -2.76421 0.499833 -1e-06 -0.000113 0.00312</pose>
       <link name='link'>
         <inertial>
@@ -793,6 +797,7 @@
       </link>
     </model>
     <model name='unit_cylinder_0'>
+    <static>1</static>
       <pose>-0.480974 -2.47128 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -848,6 +853,7 @@
       </link>
     </model>
     <model name='unit_cylinder_4'>
+    <static>1</static>
       <pose>-0.516896 -5.53105 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -903,6 +909,7 @@
       </link>
     </model>
     <model name='unit_cylinder_4_clone'>
+    <static>1</static>
       <pose>-4.00116 -9.01084 0.5 -0 -0 -0</pose>
       <link name='link'>
         <inertial>
@@ -958,6 +965,7 @@
       </link>
     </model>
     <model name='unit_cylinder_5'>
+    <static>1</static>
       <pose>-5.4664 -4.2854 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1013,6 +1021,7 @@
       </link>
     </model>
     <model name='unit_cylinder_6'>
+    <static>1</static>
       <pose>2.00625 -5.53184 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1068,6 +1077,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7'>
+    <static>1</static>
       <pose>2.01868 -2.48111 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1123,6 +1133,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone'>
+    <static>1</static>
       <pose>-0.500534 -0.829799 0.499992 -3e-06 3e-06 0</pose>
       <link name='link'>
         <inertial>
@@ -1178,6 +1189,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0'>
+    <static>1</static>
       <pose>2.50221 0.530975 0.499998 3e-06 -3e-06 0</pose>
       <link name='link'>
         <inertial>
@@ -1233,6 +1245,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_clone'>
+    <static>1</static>
       <pose>-0.472274 2.49595 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1288,6 +1301,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone'>
+    <static>1</static>
       <pose>2.54528 3.52865 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1343,6 +1357,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_2'>
+    <static>1</static>
       <pose>-0.536464 8.5406 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1398,6 +1413,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_0_clone'>
+    <static>1</static>
       <pose>-0.509806 3.57585 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1453,6 +1469,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1_clone_clone'>
+    <static>1</static>
       <pose>5.04049 -5.61517 0.499211 5e-06 0.000391 0.011155</pose>
       <link name='link'>
         <inertial>
@@ -1506,6 +1523,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1_clone_clone_clone'>
+    <static>1</static>
       <pose>5.09053 -8.38872 0.499211 -5e-06 -0.000391 0.011204</pose>
       <link name='link'>
         <inertial>
@@ -1559,6 +1577,7 @@
       </link>
     </model>
     <model name='unit_cylinder_6_clone'>
+    <static>1</static>
       <pose>2.48643 -8.48945 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1614,6 +1633,7 @@
       </link>
     </model>
     <model name='unit_cylinder_6_clone_clone'>
+    <static>1</static>
       <pose>-0.518139 -8.54207 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -1669,6 +1689,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1_clone_clone_0'>
+    <static>1</static>
       <pose>-1.12082 -4.36291 0.499211 -5e-06 -0.000391 0.011317</pose>
       <link name='link'>
         <inertial>
@@ -1722,6 +1743,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1_clone_clone_0_clone'>
+    <static>1</static>
       <pose>-1.77874 -8.95128 0.5 0 -0 0.011404</pose>
       <link name='link'>
         <inertial>
@@ -1775,6 +1797,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_2_clone_clone_clone'>
+    <static>1</static>
       <pose>6.71598 -2.37575 0.495984 3.2e-05 0.001398 -1.54863</pose>
       <link name='link'>
         <inertial>
@@ -1828,6 +1851,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_1'>
+    <static>1</static>
       <pose>8.39715 -8.43905 0.499996 3e-06 1e-06 -0</pose>
       <link name='link'>
         <inertial>
@@ -1883,6 +1907,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_2'>
+    <static>1</static>
       <pose>9.52561 -7.55742 0.499996 3e-06 1e-06 -0</pose>
       <link name='link'>
         <inertial>
@@ -1938,6 +1963,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_2_clone_clone_clone_clone'>
+    <static>1</static>
       <pose>9.30342 -4.15444 0.496608 -2.7e-05 -0.001226 -1.54911</pose>
       <link name='link'>
         <inertial>
@@ -1991,6 +2017,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_0'>
+    <static>1</static>
       <pose>11.4224 0.008345 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -2046,6 +2073,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_1'>
+    <static>1</static>
       <pose>9.55566 1.53993 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -2101,6 +2129,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_3'>
+    <static>1</static>
       <pose>6.46147 1.54817 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -2156,6 +2185,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone'>
+    <static>1</static>
       <pose>6.40094 4.58284 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -2211,6 +2241,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone_0'>
+    <static>1</static>
       <pose>9.53943 4.5929 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -2266,6 +2297,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone_1'>
+    <static>1</static>
       <pose>11.2748 3.02781 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -2321,6 +2353,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone_clone'>
+    <static>1</static>
       <pose>9.53225 7.47329 0.5 -0 -0 -0</pose>
       <link name='link'>
         <inertial>
@@ -2376,6 +2409,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone_clone_1'>
+    <static>1</static>
       <pose>3.53206 3.54323 0.5 -0 -0 -0</pose>
       <link name='link'>
         <inertial>
@@ -2431,6 +2465,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone_clone_0_clone'>
+    <static>1</static>
       <pose>9.54468 5.55964 0.499993 -3e-06 -4e-06 -0</pose>
       <link name='link'>
         <inertial>
@@ -2486,6 +2521,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_2_clone'>
+    <static>1</static>
       <pose>-5.01957 7.1473 0.499406 3e-06 -0.000312 -1.5804</pose>
       <link name='link'>
         <inertial>
@@ -2539,6 +2575,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_2_clone_0'>
+    <static>1</static>
       <pose>-5.03613 3.04361 0.499406 -3e-06 0.000312 -1.5804</pose>
       <link name='link'>
         <inertial>
@@ -2592,6 +2629,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_2_clone_0_clone'>
+    <static>1</static>
       <pose>-5.11334 -0.410967 0.499406 -3e-06 0.000312 -1.5804</pose>
       <link name='link'>
         <inertial>
@@ -2645,6 +2683,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone_clone_0_clone_0'>
+    <static>1</static>
       <pose>-2.49978 2.45235 0.499998 3e-06 -3e-06 0</pose>
       <link name='link'>
         <inertial>
@@ -2700,6 +2739,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone_clone_0_clone_1'>
+    <static>1</static>
       <pose>-3.53067 2.46222 0.499998 3e-06 -3e-06 0</pose>
       <link name='link'>
         <inertial>
@@ -2755,6 +2795,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1_clone_clone_1'>
+    <static>1</static>
       <pose>-1.97626 6.43351 0.499211 -5e-06 -0.000391 0.01153</pose>
       <link name='link'>
         <inertial>
@@ -2809,6 +2850,7 @@
     </model>
 
     <model name='unit_cylinder_7_clone_0_clone_clone_clone_0_clone_2'>
+    <static>1</static>
       <pose>0.560414 8.52867 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -2864,6 +2906,7 @@
       </link>
     </model>
     <model name='unit_cylinder_7_clone_0_clone_clone_clone_0_clone_2_clone'>
+    <static>1</static>
       <pose>2.4939 8.51818 0.499993 -3e-06 -3e-06 0</pose>
       <link name='link'>
         <inertial>
@@ -2919,6 +2962,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1_clone_clone_2'>
+    <static>1</static>
       <pose>4.96005 10.2316 0.499211 5e-06 0.000391 0.01153</pose>
       <link name='link'>
         <inertial>
@@ -2972,6 +3016,7 @@
       </link>
     </model>
     <model name='unit_box_clone_clone_1_clone_clone_3'>
+    <static>1</static>
       <pose>9.04699 10.2807 0.499211 -5e-06 -0.000391 0.01153</pose>
       <link name='link'>
         <inertial>
