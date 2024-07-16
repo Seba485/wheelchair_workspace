@@ -89,59 +89,6 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
 
-    <model name='unit_box'>
-      <pose>-6.66315 3.46999 0.5 0 -0 0</pose>
-      <link name='link'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-          <pose>0 0 0 0 -0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <box>
-              <size>1 1 1</size>
-            </box>
-          </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Orange</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
     <state world_name='default'>
       <sim_time>187 362000000</sim_time>
       <real_time>187 931077554</real_time>
@@ -167,47 +114,14 @@
           <wrench>-0.004709 -9.78112 9.78158 0 -0 0</wrench>
         </link>
       </model>
-      <model name='wheelchair_iaslab'>
-        <pose>-8.20909 1.47189 -3e-06 0 4e-06 0</pose>
-        <scale>1 1 1</scale>
-        <link name='wcias_base_footprint'>
-          <pose>-8.20909 1.47189 -3e-06 0 4e-06 0</pose>
-          <velocity>1.2e-05 0 2e-05 0 -2e-05 0</velocity>
-          <acceleration>0 -0 0 0 -0 0</acceleration>
-          <wrench>0 -0 0 0 -0 0</wrench>
-        </link>
-        <link name='wcias_left_main_wheel_link'>
-          <pose>-7.9791 1.72939 0.169997 0 0.01191 0</pose>
-          <velocity>9e-06 0 2.4e-05 -1e-06 4.9e-05 -0</velocity>
-          <acceleration>0 -0 0 0 -0 0</acceleration>
-          <wrench>0 -0 0 0 -0 0</wrench>
-        </link>
-        <link name='wcias_left_small_wheel_link'>
-          <pose>-8.62284 1.72689 0.099999 -1e-06 0.020253 0</pose>
-          <velocity>1e-05 0 1.2e-05 -2e-06 0.000102 -0</velocity>
-          <acceleration>0 0 -0 0 -0 0</acceleration>
-          <wrench>0 0 -0 0 -0 0</wrench>
-        </link>
-        <link name='wcias_right_main_wheel_link'>
-          <pose>-7.9791 1.21439 0.169997 0 0.01191 0</pose>
-          <velocity>9e-06 0 2.4e-05 -1e-06 4.9e-05 -0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='wcias_right_small_wheel_link'>
-          <pose>-8.62284 1.21689 0.099999 -1e-06 0.020253 0</pose>
-          <velocity>1e-05 0 1.1e-05 -1e-06 0.000102 0</velocity>
-          <acceleration>0 -0 -0 0 -0 0</acceleration>
-          <wrench>0 -0 -0 0 -0 0</wrench>
-        </link>
-      </model>
+  
       <light name='sun'>
         <pose>0 0 10 0 -0 0</pose>
       </light>
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-12.6782 -0.709703 25.0952 0 1.28319 0</pose>
+        <pose>-10 -7 30 0 1.55 0</pose>
         <view_controller>ortho</view_controller>
         <projection_type>orthographic</projection_type>
       </camera>
